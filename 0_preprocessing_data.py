@@ -5,7 +5,6 @@
 
 # Import the libraries
 
-# In[ ]:
 
 import os
 import xml.etree.ElementTree as ET
@@ -14,7 +13,6 @@ from sklearn.externals import joblib
 
 # Directories
 
-# In[ ]:
 
 # Current directory
 current_directory = os.getcwd()
@@ -26,7 +24,6 @@ wav_path = os.path.join(current_directory, 'data/wav')
 
 # Functions
 
-# In[ ]:
 
 # Fuction for remove noise from audio files
 def noiseReduction(original_audio):
@@ -52,7 +49,6 @@ def noiseReduction(original_audio):
     return response, new_audio
 
 
-# In[ ]:
 
 # Function for save in pickle file all metadata
 def exportMetadata(xml_path, wav_path):
@@ -97,13 +93,11 @@ def exportMetadata(xml_path, wav_path):
 
 # Process
 
-# In[ ]:
 
 # Main process
 data = exportMetadata(xml_path, wav_path)
 
 
-# In[ ]:
 
 # Visualization of one example of metadata
 for key in data:

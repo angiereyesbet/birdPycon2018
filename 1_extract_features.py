@@ -5,7 +5,6 @@
 
 # Import the libraries
 
-# In[ ]:
 
 import os
 import speechpy
@@ -20,7 +19,6 @@ from python_speech_features import logfbank
 
 # Functions
 
-# In[ ]:
 
 # function for extract mfcc features
 def extractFeatures(audio_path):
@@ -57,13 +55,11 @@ def extractFeatures(audio_path):
 
 # Process
 
-# In[ ]:
 
 # read metadata file
 data = joblib.load('data.gz')
 
 
-# In[ ]:
 
 # Main process
 item = 1
@@ -102,7 +98,6 @@ for key in data:
         data_features[key] = data_tmp
 
 
-# In[ ]:
 
 # Dump data with compression
 print('Dump data...')

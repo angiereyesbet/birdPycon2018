@@ -5,7 +5,6 @@
 
 # Import the libraries
 
-# In[ ]:
 
 import numpy as np
 import collections
@@ -18,7 +17,6 @@ from sklearn.model_selection import train_test_split
 
 # Functions
 
-# In[ ]:
 
 # Support Vector Machine for classification
 def classifier(features_train, features_test, labels_train, labels_test):
@@ -35,7 +33,6 @@ def classifier(features_train, features_test, labels_train, labels_test):
     return score_test
 
 
-# In[ ]:
 
 # Normalize data
 def normalize(data):
@@ -52,7 +49,6 @@ def normalize(data):
     return result, std_dev
 
 
-# In[ ]:
 
 # K-Means clustering
 def k_means(data, k_guess):
@@ -67,7 +63,6 @@ def k_means(data, k_guess):
     return codebook.cluster_centers_
 
 
-# In[ ]:
 
 # Create histogram
 def histogram(std_dev, features, codebook, index):    
@@ -87,7 +82,6 @@ def histogram(std_dev, features, codebook, index):
     return histogram_
 
 
-# In[ ]:
 
 # Bag of features (visual words)
 def bagOfWords(features, n_clusters):
@@ -101,7 +95,6 @@ def bagOfWords(features, n_clusters):
     return histogram_
 
 
-# In[ ]:
 
 # Classifier and model evaluation
 def main(dataset, labels):
@@ -130,13 +123,11 @@ def main(dataset, labels):
 
 # Process
 
-# In[ ]:
 
 # Read data file
 data = joblib.load('mfcc_features.gz')
 
 
-# In[ ]:
 
 # Extract new features
 mfcc_data = list()
@@ -174,7 +165,6 @@ for key in data:
     labels_data.append(label)
 
 
-# In[ ]:
 
 # Process for mfcc
 main(mfcc_data, labels_data)
