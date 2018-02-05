@@ -8,17 +8,21 @@ This development is based on the document: Identification of Colombian bird spec
 
 #### In Ubuntu 16: 
 
-Anaconda: https://www.anaconda.com/download/
+###### Anaconda: 
 
-Python: 
-  sudo apt install python3
-  
-  sudo apt install python3-pip
-  
-  sudo apt install -r requirements.txt
+Download: https://www.anaconda.com/download/
 
-Sox Packages:
-  sudo apt install sox
+###### Python: 
+
+1. sudo apt install python3
+  
+2. sudo apt install python3-pip
+  
+3. sudo apt install -r requirements.txt
+
+##### Sox Packages:
+
+sudo apt install sox
 
 ### Instructions
 
