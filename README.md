@@ -12,7 +12,9 @@ Anaconda: https://www.anaconda.com/download/
 
 Python: 
   sudo apt install python3
+  
   sudo apt install python3-pip
+  
   sudo apt install -r requirements.txt
 
 Sox Packages:
