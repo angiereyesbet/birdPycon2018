@@ -18,7 +18,7 @@ Download: https://www.anaconda.com/download/
   
 2. sudo apt install python3-pip
   
-3. sudo apt install -r requirements.txt
+3. sudo pip install -r requirements.txt
 
 ##### Sox Packages:
 

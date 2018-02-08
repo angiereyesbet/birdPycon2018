@@ -5,6 +5,7 @@
 
 # Import the libraries
 
+# In[ ]:
 
 import os
 import speechpy
@@ -19,6 +20,7 @@ from python_speech_features import logfbank
 
 # Functions
 
+# In[ ]:
 
 # function for extract mfcc features
 def extractFeatures(audio_path):
@@ -55,11 +57,13 @@ def extractFeatures(audio_path):
 
 # Process
 
+# In[ ]:
 
 # read metadata file
-data = joblib.load('data.gz')
+data = joblib.load("data.pkl.compressed")
 
 
+# In[ ]:
 
 # Main process
 item = 1
@@ -68,9 +72,9 @@ data_features = {}
 
 for key in data:
 
-    audio_path = data[key]['silDir']
+    audio_path = data[key]["silDir"]
 
-    class_id = data[key]['ClassId']
+    class_id = data[key]["ClassId"]
 
     # process for specie ID
     if class_id in species:
@@ -90,18 +94,20 @@ for key in data:
         
         data_tmp = {}
         
-        data_tmp['mfcc'] = mfcc
-        data_tmp['mfcc_cmvn'] = mfcc_cmvn
-        data_tmp['mfcc_feature_cube'] = mfcc_feature_cube
-        data_tmp['label'] = specie_id
+        data_tmp["mfcc"] = mfcc
+        data_tmp["mfcc_cmvn"] = mfcc_cmvn
+        data_tmp["mfcc_feature_cube"] = mfcc_feature_cube
+        data_tmp["label"] = specie_id
         
         data_features[key] = data_tmp
 
 
+# In[ ]:
 
 # Dump data with compression
-print('Dump data...')
-joblib.dump(data_features, 'mfcc_features.gz', compress=('gzip', 3)) 
-print("Files for process:", len(data_features))
+filename = "mfcc_features.pkl.compressed"
+print("Dump data:", filename)
+joblib.dump(data_features, filename, compress=True)
+print("Files for process:", len(data))
 print("Done.")
 

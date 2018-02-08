@@ -5,6 +5,7 @@
 
 # Import the libraries
 
+# In[ ]:
 
 import numpy as np
 import collections
@@ -15,6 +16,7 @@ from sklearn.model_selection import train_test_split
 
 # Functions
 
+# In[ ]:
 
 # Support Vector Machine for classification
 def classifier(features_train, features_test, labels_train, labels_test):
@@ -31,6 +33,7 @@ def classifier(features_train, features_test, labels_train, labels_test):
     return score_test
 
 
+# In[ ]:
 
 # Extract global features
 def globalFeatures(features):
@@ -38,6 +41,7 @@ def globalFeatures(features):
     return features.mean(0)
 
 
+# In[ ]:
 
 # Classifier and model evaluation
 def main(dataset, labels):
@@ -46,31 +50,33 @@ def main(dataset, labels):
     features_train, features_test, labels_train, labels_test = train_test_split(
         dataset, labels, test_size=0.3)
 
-    print('Train set shape:', np.shape(features_train))
-    print('Test set shape:', np.shape(features_test))
+    print("Train set shape:", np.shape(features_train))
+    print("Test set shape:", np.shape(features_test))
 
     counter = collections.Counter(labels_train)
     counter = dict(counter)
 
-    print('Distribution labels (train set):', counter)
+    print("Distribution labels (train set):", counter)
 
     counter=collections.Counter(labels_test)
     counter = dict(counter)
 
-    print('Distribution labels (test set):', counter)
+    print("Distribution labels (test set):", counter)
 
     score = classifier(features_train, features_test, labels_train, labels_test)
 
-    print('Done!', 'Score:', score)
+    print("Done!", "Score:", score)
 
 
 # Process
 
+# In[ ]:
 
 # Read data file
-data = joblib.load('mfcc_features.gz')
+data = joblib.load("mfcc_features.pkl.compressed")
 
 
+# In[ ]:
 
 # Extract new features
 
@@ -81,12 +87,12 @@ labels_data = list()
 
 for key in data:
     
-    mfcc = data[key]['mfcc']
-    mfcc_cmvn = data[key]['mfcc_cmvn']
-    mfcc_feature_cube = data[key]['mfcc_feature_cube']
+    mfcc = data[key]["mfcc"]
+    mfcc_cmvn = data[key]["mfcc_cmvn"]
+    mfcc_feature_cube = data[key]["mfcc_feature_cube"]
     mfcc_feature_cube = mfcc_feature_cube.reshape((len(mfcc_feature_cube), 39))
     
-    label = data[key]['label']    
+    label = data[key]["label"]    
     
     mfcc_global = globalFeatures(mfcc)
     
@@ -105,21 +111,18 @@ for key in data:
     labels_data.append(label)
 
 
+# In[ ]:
 
 # Process for mfcc
 main(mfcc_data, labels_data)
 
-print('\n')
+print("\n")
 
 # Process for mfcc (mean + variance normalized)
 main(mfcc_cmvn_data, labels_data)
 
-print('\n')
+print("\n")
 
 # Process for mfcc (cube)
 main(mfcc_feature_cube_data, labels_data)
-
-
-
-
 
